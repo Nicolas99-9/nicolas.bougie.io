@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlignUSER: Human-Aligned LLM Agents via World Models for Recommender System Evaluation</title>
-    <meta name="description" content="AlignUSER learns world-model-driven LLM agents from human interactions for evaluating recommender systems. Achieves 52.9% action generation accuracy and 89.3% thought-action consistency.">
-    <meta name="keywords" content="AlignUSER, LLM Agents, Recommender Systems, User Simulation, World Models, Reinforcement Learning, Nicolas Bougie">
+    <title>ContextSim: Context-Aware Agent Simulation for Recommender System Evaluation</title>
+    <meta name="description" content="ContextSim leverages LLM agents grounded in daily life activities to simulate context-aware user behavior for recommender system evaluation.">
+    <meta name="keywords" content="ContextSim, Context-Aware, LLM Agents, Recommender Systems, User Simulation, Offline A/B Testing, Nicolas Bougie">
     <meta name="author" content="Nicolas Bougie">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://nicolas99-9.github.io/nicolas.bougie.io/alignuser.html">
-    <!-- Open Graph / Social Media -->
+    <link rel="canonical" href="https://nicolas99-9.github.io/nicolas.bougie.io/contextsim.html">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="AlignUSER: Human-Aligned LLM Agents via World Models">
-    <meta property="og:description" content="A framework that learns world-model-driven agents from human interactions for evaluating recommender systems.">
-    <meta property="og:url" content="https://nicolas99-9.github.io/nicolas.bougie.io/alignuser.html">
-    <meta property="og:image" content="https://nicolas99-9.github.io/nicolas.bougie.io/illustration.jpg">
-    <!-- Twitter -->
+    <meta property="og:title" content="ContextSim: Context-Aware Agent Simulation for Recommender Evaluation">
+    <meta property="og:description" content="An LLM agent framework that anchors user simulation in daily life activities for context-aware recommender system evaluation.">
+    <meta property="og:url" content="https://nicolas99-9.github.io/nicolas.bougie.io/contextsim.html">
+    <meta property="og:image" content="https://nicolas99-9.github.io/nicolas.bougie.io/contextsim_overall.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AlignUSER: Human-Aligned LLM Agents via World Models">
-    <meta name="twitter:description" content="A framework that learns world-model-driven agents from human interactions for evaluating recommender systems.">
+    <meta name="twitter:title" content="ContextSim: Context-Aware Agent Simulation for Recommender Evaluation">
+    <meta name="twitter:description" content="An LLM agent framework that anchors user simulation in daily life activities for context-aware recommender system evaluation.">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -52,7 +50,6 @@
             padding: 40px 20px;
         }
 
-        /* Header Section */
         .header {
             text-align: center;
             margin-bottom: 40px;
@@ -73,7 +70,17 @@
             margin-bottom: 25px;
         }
 
-        /* Authors */
+        .venue-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
         .authors {
             margin-bottom: 15px;
             font-size: 1.05em;
@@ -91,6 +98,7 @@
         .author-note {
             font-size: 0.85em;
             color: var(--secondary-color);
+            margin-bottom: 20px;
         }
 
         .affiliations {
@@ -99,13 +107,6 @@
             margin-bottom: 20px;
         }
 
-        .affiliation-logo {
-            height: 28px;
-            vertical-align: middle;
-            margin-left: 8px;
-        }
-
-        /* Links */
         .links {
             display: flex;
             justify-content: center;
@@ -133,13 +134,6 @@
             border-color: var(--primary-color);
         }
 
-        .author-note {
-            font-size: 0.85em;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-        }
-
-        /* Sections */
         section {
             margin-bottom: 45px;
         }
@@ -166,7 +160,6 @@
             text-align: justify;
         }
 
-        /* Abstract */
         .abstract {
             background-color: var(--code-bg);
             padding: 25px 30px;
@@ -178,7 +171,6 @@
             margin-bottom: 0;
         }
 
-        /* Figures */
         .figure {
             text-align: center;
             margin: 30px 0;
@@ -205,7 +197,6 @@
             color: var(--text-color);
         }
 
-        /* Tables */
         .table-container {
             overflow-x: auto;
             margin: 25px 0;
@@ -246,7 +237,6 @@
             text-decoration: underline;
         }
 
-        /* Key Results */
         .key-results {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -275,7 +265,6 @@
             margin-top: 5px;
         }
 
-        /* BibTeX */
         .bibtex {
             background-color: var(--code-bg);
             border: 1px solid var(--border-color);
@@ -288,7 +277,6 @@
             word-wrap: break-word;
         }
 
-        /* Method Steps */
         .method-steps {
             display: flex;
             flex-direction: column;
@@ -326,31 +314,6 @@
             text-align: left;
         }
 
-        /* Comparison */
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 25px 0;
-        }
-
-        .comparison-item {
-            text-align: center;
-        }
-
-        .comparison-item img {
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .comparison-label {
-            margin-top: 10px;
-            font-weight: 500;
-            color: var(--secondary-color);
-        }
-
-        /* Footer */
         footer {
             text-align: center;
             padding: 30px 0;
@@ -359,14 +322,9 @@
             font-size: 0.9em;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .title {
                 font-size: 1.6em;
-            }
-
-            .comparison-grid {
-                grid-template-columns: 1fr;
             }
 
             .key-results {
@@ -378,26 +336,19 @@
                 font-size: 0.85em;
             }
         }
-
-        /* LLM Logos */
-        .llm-logo {
-            height: 1.2em;
-            vertical-align: middle;
-            margin-right: 4px;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <header class="header">
-            <h1 class="title">AlignUSER</h1>
-            <p class="subtitle">Human-Aligned LLM Agents via World Models for Recommender System Evaluation</p>
+            <div class="venue-badge">arXiv 2026</div>
+            <h1 class="title">ContextSim</h1>
+            <p class="subtitle">Beyond Offline A/B Testing: Context-Aware Agent Simulation for Recommender System Evaluation</p>
 
             <div class="authors">
-                <a href="index.html">Nicolas Bougie</a><sup>1*</sup>,
-                <a href="#">Gian Marconi Marconi</a><sup>1</sup>,
-                <a href="#">Tony Yip</a><sup>1</sup>,
+                <a href="index.html">Nicolas Bougie</a><sup>1</sup>,
+                <a href="#">Gian Maria Marconi</a><sup>1</sup>,
+                <a href="#">Xiaotong Ye</a><sup>1</sup>,
                 <a href="#">Narimasa Watanabe</a><sup>1</sup>
             </div>
 
@@ -405,12 +356,8 @@
                 <sup>1</sup>Woven by Toyota
             </div>
 
-            <p class="author-note"><sup>*</sup>Corresponding author</p>
-
-            <p class="author-note" style="font-size: 1em; color: #059669; font-weight: 600; margin-bottom: 15px;">ACL 2026 (Main Conference)</p>
-
             <div class="links">
-                <a href="https://arxiv.org/abs/2601.00930" class="link-btn" target="_blank">[arXiv]</a>
+                <a href="https://arxiv.org/abs/2604.09549" class="link-btn" target="_blank">[arXiv]</a>
                 <a href="#" class="link-btn">[Code]</a>
             </div>
         </header>
@@ -420,7 +367,7 @@
             <h2>Abstract</h2>
             <div class="abstract">
                 <p>
-                    Evaluating recommender systems remains challenging due to the gap between offline metrics and real user behavior, as well as the scarcity of interaction data. Recent work explores large language model (LLM) agents as synthetic users, yet they typically rely on few-shot prompting, which yields a shallow understanding of the environment and limits their ability to faithfully reproduce user actions. We introduce <strong>AlignUSER</strong>, a framework that learns <em>world-model-driven</em> agents from human interactions. Given rollout sequences of actions and states, we formalize world modeling as a next state prediction task that helps the agent internalize the environment. To align actions with human personas, we generate counterfactual trajectories around demonstrations and prompt the LLM to compare its decisions with human choices, identify suboptimal actions, and extract lessons. The learned policy is then used to drive agent interactions with the recommender system. We evaluate AlignUSER across multiple datasets and demonstrate <strong>closer alignment with genuine humans</strong> than prior work, both at the micro and macro levels.
+                    Recommender systems are central to online services, yet evaluation remains challenging due to the disconnect between offline metrics and online performance. We introduce <strong>ContextSim</strong>, an LLM agent framework that simulates believable user proxies by anchoring interactions in daily life activities. Rather than modeling users in isolation, ContextSim incorporates a life simulation module that generates scenarios specifying when, where, and why users engage with recommendations, grounding agents in realistic temporal, spatial, situational, goal, and constraint contexts. To enforce consistency, agents maintain explicit internal thoughts and their behaviors are aligned at both the action and trajectory levels through item disentanglement and trajectory alignment tasks. Experiments demonstrate that ContextSim generates user interactions more closely resembling authentic human behavior compared to previous approaches. Importantly, recommender system parameters optimized using ContextSim show improved real-world engagement when validated through offline A/B testing correlation analysis.
                 </p>
             </div>
         </section>
@@ -430,20 +377,20 @@
             <h2>Key Results</h2>
             <div class="key-results">
                 <div class="result-card">
-                    <span class="result-value">52.9%</span>
-                    <span class="result-label">Action Generation Accuracy<br>(vs. 24.2% prior best)</span>
+                    <span class="result-value">82.4%</span>
+                    <span class="result-label">Preference Alignment<br>(vs. 79.1% SimUSER)</span>
                 </div>
                 <div class="result-card">
-                    <span class="result-value">89.3%</span>
-                    <span class="result-label">Thought-Action Consistency</span>
-                </div>
-                <div class="result-card">
-                    <span class="result-value">0.43</span>
+                    <span class="result-value">0.45</span>
                     <span class="result-label">Rating RMSE<br>(vs. 0.50 SimUSER)</span>
                 </div>
                 <div class="result-card">
-                    <span class="result-value">4.58</span>
-                    <span class="result-label">Human-Likeness Score<br>(5-point scale)</span>
+                    <span class="result-value">84.1%</span>
+                    <span class="result-label">Thought Consistency<br>(vs. 29.2% SimUSER)</span>
+                </div>
+                <div class="result-card">
+                    <span class="result-value">4.60</span>
+                    <span class="result-label">Human-Likeness<br>(5-point scale)</span>
                 </div>
             </div>
         </section>
@@ -452,59 +399,52 @@
         <section>
             <h2>Overview</h2>
             <p>
-                AlignUSER learns to simulate realistic user behavior by combining two key insights: (1) agents should understand how the world works through next-state prediction, and (2) agents should align with human decisions through counterfactual reasoning. The framework first pretrains on environment dynamics, then learns from comparing human actions with alternative trajectories.
+                ContextSim addresses a key limitation of existing LLM-based user simulators: they model users in isolation, ignoring the contextual factors that shape real-world decisions. ContextSim grounds agent behavior in daily life activities, generating realistic scenarios that determine when, where, and why users interact with recommendations. The framework combines life simulation, thought synthesis, and context-aware policy to produce agents whose trajectories closely match real human behavior.
             </p>
             <div class="figure">
-                <img src="illustration.jpg" alt="AlignUSER Framework Overview">
+                <img src="contextsim_overall.jpg" alt="ContextSim Framework Overview">
                 <p class="figure-caption">
-                    <strong>Figure 1:</strong> The AlignUSER framework for evaluating a recommender system by implicitly modeling a world model and exploring alternative scenarios. Green arrows show the human trajectory; red dashed arrows show counterfactual alternatives explored by the world model.
+                    <strong>Figure 1:</strong> The ContextSim framework for evaluating recommender systems. A life simulation module generates daily schedules with temporal, spatial, and situational contexts. Agents interact with the recommender system while maintaining explicit internal thoughts aligned with their persona and context.
                 </p>
             </div>
         </section>
 
-        <!-- Motivation -->
+        <!-- Method -->
         <section>
-            <h2>Motivation</h2>
+            <h2>Framework</h2>
             <p>
-                Existing LLM-based user simulators rely on few-shot prompting, treating the agent policy as a black box without explicit understanding of how actions shape future states. This leads to shallow behavior that reflects the model's priors rather than genuine user patterns. AlignUSER addresses this through:
+                ContextSim operates in three phases to create context-aware user agents:
             </p>
 
             <div class="method-steps">
                 <div class="method-step">
                     <div class="step-number">1</div>
                     <div class="step-content">
-                        <h4>World Modeling</h4>
-                        <p>Train the agent to predict next states from state-action pairs, helping it internalize environment dynamics (e.g., clicking a product leads to a detail page).</p>
+                        <h4>Persona Initialization</h4>
+                        <p>Infer self-consistent personas from historical data, including age, Big Five personality traits, occupation, habits, and preferences. Agents are equipped with episodic memory (interaction history) and emotional memory (fatigue, satisfaction).</p>
                     </div>
                 </div>
                 <div class="method-step">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <h4>Counterfactual Reasoning</h4>
-                        <p>Generate alternative trajectories and prompt the LLM to compare them with human actions, identifying why human choices are better aligned with persona and context.</p>
+                        <h4>Thought Synthesis</h4>
+                        <p>Train agents via two reasoning tasks: item disentanglement (why an action reflects user preferences) and trajectory alignment (why historical actions are preferred over alternatives). Joint SFT on both tasks enables explicit, consistent reasoning.</p>
                     </div>
                 </div>
                 <div class="method-step">
                     <div class="step-number">3</div>
                     <div class="step-content">
-                        <h4>Policy Learning</h4>
-                        <p>Train the policy to jointly predict chain-of-thought reasoning and expert actions, creating an agent that understands both what to do and why.</p>
+                        <h4>Life Simulation Module</h4>
+                        <p>Generate realistic daily schedules conditioned on persona, weather, and local events. Each interaction is grounded in five context dimensions: temporal (time of day), spatial (location), situational (activity, mood), goal (purpose), and constraint (budget, time).</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Framework -->
-        <section>
-            <h2>Counterfactual Reflection</h2>
-            <p>
-                For each human transition, we sample alternative actions that the current policy considers plausible but differ from the demonstrated action. The agent then reasons about why the human choice is better in context, more aligned with persona, and leads to better future outcomes.
-            </p>
-            <div class="figure">
-                <img src="reasoning.jpg" alt="Counterfactual Reflection Process">
-                <p class="figure-caption">
-                    <strong>Figure 2:</strong> Counterfactual reflection from counterfactual trajectories. The LLM agent compares human actions with alternatives, generating reasoning signals that explain (1) contextual fit, (2) persona alignment, and (3) long-term outcome improvement.
-                </p>
+                <div class="method-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Context-Aware Interaction</h4>
+                        <p>Agents sense the page, evaluate items, infer internal state (fatigue, curiosity), select actions with explicit thought, and self-reflect to update episodic memory. Context shapes every decision throughout the interaction session.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -514,7 +454,7 @@
 
             <h3>Preference Alignment</h3>
             <p>
-                We evaluate whether agents can identify items aligned with their human counterparts' tastes. AlignUSER significantly outperforms baselines across all datasets and distractor levels.
+                We evaluate whether agents can identify items aligned with their human counterparts' tastes. ContextSim outperforms all baselines across all datasets:
             </p>
             <div class="table-container">
                 <table>
@@ -564,22 +504,13 @@
                             <td>0.794</td>
                         </tr>
                         <tr class="highlight-row">
-                            <td>AlignUSER</td>
-                            <td class="second-best">0.820</td>
-                            <td class="second-best">0.817</td>
-                            <td class="second-best">0.843</td>
-                            <td class="second-best">0.830</td>
-                            <td class="second-best">0.814</td>
-                            <td class="second-best">0.834</td>
-                        </tr>
-                        <tr class="highlight-row">
-                            <td>AlignUSER+</td>
-                            <td class="best">0.832</td>
-                            <td class="best">0.827</td>
-                            <td class="best">0.855</td>
-                            <td class="best">0.842</td>
-                            <td class="best">0.827</td>
-                            <td class="best">0.846</td>
+                            <td>ContextSim</td>
+                            <td class="best">0.824</td>
+                            <td class="best">0.819</td>
+                            <td class="best">0.847</td>
+                            <td class="best">0.831</td>
+                            <td class="best">0.818</td>
+                            <td class="best">0.839</td>
                         </tr>
                     </tbody>
                 </table>
@@ -587,7 +518,7 @@
 
             <h3>Rating Prediction</h3>
             <p>
-                AlignUSER achieves substantially lower rating prediction error than all baselines, demonstrating better understanding of user preferences.
+                ContextSim achieves substantially lower rating prediction error than all baselines, demonstrating better understanding of user preferences:
             </p>
             <div class="table-container">
                 <table>
@@ -610,6 +541,15 @@
                     </thead>
                     <tbody>
                         <tr>
+                            <td>RecAgent</td>
+                            <td>1.102</td>
+                            <td>0.763</td>
+                            <td>1.259</td>
+                            <td>1.119</td>
+                            <td>1.077</td>
+                            <td>0.960</td>
+                        </tr>
+                        <tr>
                             <td>Agent4Rec</td>
                             <td>0.761</td>
                             <td>0.714</td>
@@ -628,146 +568,152 @@
                             <td>0.532</td>
                         </tr>
                         <tr class="highlight-row">
-                            <td>AlignUSER</td>
-                            <td class="second-best">0.469</td>
-                            <td class="second-best">0.415</td>
-                            <td class="second-best">0.513</td>
-                            <td class="second-best">0.399</td>
-                            <td class="second-best">0.534</td>
-                            <td class="second-best">0.501</td>
-                        </tr>
-                        <tr class="highlight-row">
-                            <td>AlignUSER+</td>
-                            <td class="best">0.429</td>
-                            <td class="best">0.387</td>
-                            <td class="best">0.465</td>
-                            <td class="best">0.374</td>
-                            <td class="best">0.497</td>
-                            <td class="best">0.483</td>
+                            <td>ContextSim</td>
+                            <td class="best">0.451</td>
+                            <td class="best">0.392</td>
+                            <td class="best">0.511</td>
+                            <td class="best">0.369</td>
+                            <td class="best">0.528</td>
+                            <td class="best">0.471</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <h3>Action Alignment</h3>
+            <h3>Thought Consistency</h3>
             <p>
-                On next-action prediction, AlignUSER dramatically outperforms both general-purpose LLMs and specialized user simulation methods.
-            </p>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Model</th>
-                            <th>Action Gen. (Acc)</th>
-                            <th>Action Type (F1)</th>
-                            <th>Click Type (F1)</th>
-                            <th>Session Outcome (F1)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><img src="OpenAI_Logo.png" class="llm-logo">GPT-4.1</td>
-                            <td>21.51</td>
-                            <td>48.78</td>
-                            <td>44.47</td>
-                            <td>47.54</td>
-                        </tr>
-                        <tr>
-                            <td><img src="claude.png" class="llm-logo">Claude-3.7</td>
-                            <td>10.75</td>
-                            <td>31.58</td>
-                            <td>27.27</td>
-                            <td>43.52</td>
-                        </tr>
-                        <tr>
-                            <td><img src="meta-color.png" class="llm-logo">Llama-3.3</td>
-                            <td>8.31</td>
-                            <td>24.29</td>
-                            <td>19.99</td>
-                            <td>36.64</td>
-                        </tr>
-                        <tr>
-                            <td>SimUSER</td>
-                            <td>24.21</td>
-                            <td>52.44</td>
-                            <td>48.68</td>
-                            <td>59.63</td>
-                        </tr>
-                        <tr class="highlight-row">
-                            <td><img src="Qwen_logo.png" class="llm-logo">AlignUSER</td>
-                            <td class="second-best">51.47</td>
-                            <td class="second-best">69.81</td>
-                            <td class="second-best">66.29</td>
-                            <td class="second-best">78.07</td>
-                        </tr>
-                        <tr class="highlight-row">
-                            <td><img src="Qwen_logo.png" class="llm-logo">AlignUSER+</td>
-                            <td class="best">52.92</td>
-                            <td class="best">71.94</td>
-                            <td class="best">66.88</td>
-                            <td class="best">80.52</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>Thought and Persona Consistency</h3>
-            <p>
-                On the OPeRA dataset with human rationales, AlignUSER achieves 89.3% thought-action consistency and produces session statistics closest to real human behavior.
+                We evaluate persona-action consistency using GPT-4o. ContextSim achieves dramatically higher consistency than baselines:
             </p>
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
                             <th>Method</th>
-                            <th>Thought-Action (%)</th>
-                            <th>Persona-Behavior (%)</th>
-                            <th>Pages/Session</th>
-                            <th>Purchase Gap (%)</th>
+                            <th>Coherent (%)</th>
+                            <th>Partially (%)</th>
+                            <th>Contradictory (%)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Human (OPeRA)</td>
-                            <td>--</td>
-                            <td>--</td>
-                            <td>5.3</td>
-                            <td>--</td>
-                        </tr>
-                        <tr>
                             <td>RecAgent</td>
-                            <td>49.5</td>
-                            <td>46.7</td>
-                            <td>3.5</td>
-                            <td>16.3</td>
+                            <td>17.3</td>
+                            <td>40.9</td>
+                            <td>41.8</td>
                         </tr>
                         <tr>
                             <td>Agent4Rec</td>
-                            <td>55.8</td>
-                            <td>52.4</td>
-                            <td>4.0</td>
-                            <td>12.1</td>
+                            <td>21.8</td>
+                            <td>43.6</td>
+                            <td>34.6</td>
                         </tr>
                         <tr>
                             <td>SimUSER</td>
-                            <td>64.3</td>
-                            <td>61.5</td>
-                            <td>4.6</td>
-                            <td>9.9</td>
+                            <td>29.2</td>
+                            <td>41.0</td>
+                            <td>29.8</td>
                         </tr>
                         <tr class="highlight-row">
-                            <td>AlignUSER</td>
-                            <td class="second-best">86.7</td>
-                            <td class="second-best">82.4</td>
-                            <td class="best">5.1</td>
-                            <td class="second-best">2.5</td>
+                            <td>ContextSim</td>
+                            <td class="best">84.1</td>
+                            <td>10.6</td>
+                            <td class="best">5.3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Human-Likeness Evaluation</h3>
+            <p>
+                GPT-4o assessed whether agent interactions appear human or AI-generated using a 5-point Likert scale:
+            </p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>MovieLens</th>
+                            <th>AmazonBook</th>
+                            <th>Steam</th>
+                            <th>OPeRA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>RecAgent</td>
+                            <td>3.01</td>
+                            <td>3.14</td>
+                            <td>2.96</td>
+                            <td>3.08</td>
+                        </tr>
+                        <tr>
+                            <td>Agent4Rec</td>
+                            <td>3.04</td>
+                            <td>3.21</td>
+                            <td>3.09</td>
+                            <td>3.15</td>
+                        </tr>
+                        <tr>
+                            <td>SimUSER</td>
+                            <td>4.41</td>
+                            <td>3.99</td>
+                            <td>4.02</td>
+                            <td>4.13</td>
                         </tr>
                         <tr class="highlight-row">
-                            <td>AlignUSER+</td>
-                            <td class="best">89.3</td>
-                            <td class="best">85.6</td>
-                            <td class="best">5.1</td>
-                            <td class="best">2.1</td>
+                            <td>ContextSim</td>
+                            <td class="best">4.60</td>
+                            <td class="best">4.18</td>
+                            <td class="best">4.22</td>
+                            <td class="best">4.37</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Optimizing RS Parameters</h3>
+            <p>
+                We validate ContextSim by optimizing recommender system parameters and measuring real-world engagement on a food recommendation platform:
+            </p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Strategy</th>
+                            <th>Viewing Ratio</th>
+                            <th>Liked Items</th>
+                            <th>Prop. Likes</th>
+                            <th>Satisfaction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Baseline</td>
+                            <td>0.521</td>
+                            <td>3.14</td>
+                            <td>0.398</td>
+                            <td>3.82</td>
+                        </tr>
+                        <tr>
+                            <td>Traditional (nDCG)</td>
+                            <td>0.535</td>
+                            <td>3.22</td>
+                            <td>0.407</td>
+                            <td>3.86</td>
+                        </tr>
+                        <tr>
+                            <td>SimUSER-optimized</td>
+                            <td>0.561</td>
+                            <td>3.58</td>
+                            <td>0.434</td>
+                            <td>4.09</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>ContextSim-optimized</td>
+                            <td class="best">0.589</td>
+                            <td class="best">3.91</td>
+                            <td class="best">0.462</td>
+                            <td class="best">4.24</td>
                         </tr>
                     </tbody>
                 </table>
@@ -777,31 +723,30 @@
         <!-- Datasets -->
         <section>
             <h2>Datasets</h2>
-            <p>We evaluate AlignUSER on four diverse datasets spanning different recommendation domains:</p>
+            <p>ContextSim is evaluated on four diverse recommendation domains:</p>
             <ul style="margin-left: 20px; margin-top: 10px;">
                 <li><strong>MovieLens-1M:</strong> ~1 million movie ratings from 6,040 users over 3,706 movies</li>
-                <li><strong>Steam:</strong> User-game interactions with English-language reviews</li>
                 <li><strong>AmazonBook:</strong> Book ratings and reviews from Amazon</li>
-                <li><strong>OPeRA:</strong> Real-world shopping sessions with persona surveys, actions, and self-reported rationales</li>
+                <li><strong>Steam:</strong> Video game interaction records with English-language reviews</li>
+                <li><strong>OPeRA:</strong> Real-world shopping sessions with persona surveys, fine-grained actions, and self-reported rationales</li>
             </ul>
         </section>
 
         <!-- BibTeX -->
         <section>
             <h2>BibTeX</h2>
-            <div class="bibtex">@inproceedings{bougie2026alignuser,
-  title={AlignUSER: Human-Aligned LLM Agents via World Models
-         for Recommender System Evaluation},
-  author={Bougie, Nicolas and Marconi, Gian Marconi and
-          Yip, Tony and Watanabe, Narimasa},
-  booktitle={Proceedings of the 64th Annual Meeting of the
-             Association for Computational Linguistics (ACL)},
+            <div class="bibtex">@article{bougie2026contextsim,
+  title={Beyond Offline A/B Testing: Context-Aware Agent
+         Simulation for Recommender System Evaluation},
+  author={Bougie, Nicolas and Marconi, Gian Maria and
+          Ye, Xiaotong and Watanabe, Narimasa},
+  journal={arXiv preprint arXiv:2604.09549},
   year={2026}
 }</div>
         </section>
 
         <footer>
-            <p>AlignUSER - <a href="index.html" style="color: var(--primary-color); text-decoration: none;">Nicolas Bougie</a> - Woven by Toyota</p>
+            <p>ContextSim - <a href="index.html" style="color: var(--primary-color); text-decoration: none;">Nicolas Bougie</a> - Woven by Toyota</p>
         </footer>
     </div>
 </body>
